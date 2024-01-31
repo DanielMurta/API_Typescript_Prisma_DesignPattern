@@ -1,15 +1,19 @@
 import { Request, Response } from "express";
 import { prisma } from "../database";
+import { createPostService } from "../services/createPostService";
+import { PostRepository } from "../repositories/PostRepository";
 
 export default {
   async createPost(request: Request, response: Response){
     try {
       const { title, content, userId } = request.body;
-      const post = await prisma.post.create({ data: {
-        title: title,
-        content: content,
-        userId: userId
-      }});
+      const createPost =  new createPostService(new PostRepository());
+      
+      const post = await createPost.execute(
+        title, 
+        content, 
+        userId
+      );
 
       return response.json({
         erro: false,

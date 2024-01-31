@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 import Express from 'express';
 import UserController from './controllers/UserController';
+import PostController from './controllers/PostController';
 
 
 const app = Express();
@@ -13,6 +14,10 @@ app.get('/', (req, res)=> {
 });
 
 app.post('/createUser', UserController.createUser)
+app.post('/createPost', PostController.createPost)
+app.get('/listPost/:id', PostController.ListPost)
+app.put('/updatePost', PostController.UpdatePost)
+app.delete('/deletePost/:id', PostController.DeletePost)
 
 app.listen(port, ()=> {
   console.log('Running');
