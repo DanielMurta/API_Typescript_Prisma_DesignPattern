@@ -10,3 +10,5 @@ class createUserService {
         return user
     }
 }
+
+export { createUserService };

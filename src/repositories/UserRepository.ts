@@ -14,3 +14,5 @@ class UserRepository implements IUserRepository {
         return user
     }
 }
+
+export { UserRepository };
